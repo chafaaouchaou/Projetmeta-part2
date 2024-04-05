@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -45,7 +46,10 @@
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="375.0" prefWidth="159.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="17.0" prefWidth="102.0" text="Nombre de sacs" />
+            <Label prefHeight="17.0" prefWidth="102.0" text="Nombre de sacs">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font></Label>
             <TextField fx:id="nbsacs" />
             <Label text="Nombre d'iteme " />
             <TextField fx:id="nbitems" />
@@ -106,7 +110,7 @@
    <center>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="428.0" prefWidth="297.0">
+            <VBox prefHeight="463.0" prefWidth="328.0">
                <children>
                   <HBox prefHeight="245.0" prefWidth="297.0">
                      <children>
@@ -157,17 +161,17 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="209.0" prefWidth="297.0">
+                  <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="297.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="87.0" prefWidth="167.0">
+                        <VBox alignment="TOP_CENTER">
                            <children>
                               <Label text="algorithme genitique" />
                               <Label fx:id="timegen" text="vide" />
                               <Label fx:id="bestgen" text="vide" />
-                              <Label fx:id="solgen" text="vide" />
+                              <TextArea fx:id="textgen" prefHeight="200.0" prefWidth="200.0" />
                            </children>
                         </VBox>
-                        <VBox alignment="TOP_CENTER" prefHeight="95.0" prefWidth="178.0">
+                        <VBox alignment="TOP_CENTER">
                            <children>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="10.0" prefHeight="24.0" prefWidth="130.0" text="algorithme BSO" textAlignment="CENTER">
                                  <VBox.margin>
@@ -176,7 +180,7 @@
                               </Label>
                               <Label fx:id="timeBSO" layoutX="140.0" layoutY="27.0" text="vide" />
                               <Label fx:id="bestbso" layoutX="140.0" layoutY="27.0" text="vide" />
-                              <Label fx:id="solbso" layoutX="10.0" layoutY="44.0" text="vide" />
+                              <TextArea fx:id="textbso" prefHeight="200.0" prefWidth="200.0" />
                            </children>
                         </VBox>
                      </children>

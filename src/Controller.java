@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 // import java.io.File;
 // import javafx.scene.control.Button;
 // import javafx.scene.layout.VBox;
+import javafx.scene.control.TextArea;
 
 public class Controller implements Initializable {
 
@@ -31,17 +32,25 @@ public class Controller implements Initializable {
     @FXML
     private TextField popsize;
 
-    @FXML
-    private Label solbso;
+    // @FXML
+    // private Label solbso;
 
-    @FXML
-    private Label solgen;
+    // @FXML
+    // private Label solgen;
 
     @FXML
     private Label timeBSO;
 
     @FXML
     private Label timegen;
+
+     @FXML
+    private TextArea textgen;
+     @FXML
+    private TextArea textbso;
+
+
+
     // :::::::::::::::::::::::::::::::
 
     @FXML
@@ -119,7 +128,7 @@ public class Controller implements Initializable {
     @FXML
     void startBSO(ActionEvent event) {
         bestbso.setText("");
-        solbso.setText("");
+        textbso.setText("");
         timeBSO.setText("");
         sacs.clear();
         items.clear();
@@ -167,7 +176,8 @@ public class Controller implements Initializable {
 
             }
             bestbso.setText(bestBee.fitness + "");
-            solbso.setText(chemain);
+            textbso.setText(chemain);
+            
             timeBSO.setText("Time: " + duration / 1000000 + " ms");
 
 
@@ -211,7 +221,7 @@ public class Controller implements Initializable {
     void startgenetic(ActionEvent event) {
 
         bestgen.setText("");
-        solgen.setText("");
+        textgen.setText("");
         timegen.setText("");
         sacs.clear();
         items.clear();
@@ -226,6 +236,8 @@ public class Controller implements Initializable {
         List<Integer> knapsackCapacity = new ArrayList<>();
         List<Item> itemsmeta = new ArrayList<>();
         int counter = 0;
+        System.out.println("nb items : "+nbitemss);
+        System.out.println("nb sacs : "+nbsacss);
 
         try {
             int nbItemsInt = Integer.parseInt(nbitemss);
@@ -242,6 +254,17 @@ public class Controller implements Initializable {
             knapsackCapacity = Datameta.getSacs(nbsacsInt, "src\\csv\\" + selectedSacsFile.getName());
             itemsmeta = Datameta.getItems(nbItemsInt, "src\\csv\\" + selectedItemsFile.getName());
 
+
+            // System.out.println(" printing knapsackCapacity");
+            // for (Integer val : knapsackCapacity) {
+            //     System.out.println(val);
+            // }
+            
+            // System.out.println(" printing itemsmeta");
+            // for (Item val : itemsmeta) {
+            //     System.out.println(val.nom + " - " + val.poids + " - " + val.valeur);
+            // }
+
             startTime = System.nanoTime();
 
             Population population = MultipleKnapsackGeneticAlgorithm.geneticalgoexec(mergedSolutions, knapsackCapacity,
@@ -255,18 +278,19 @@ public class Controller implements Initializable {
             for (Integer val : population.solutions.get(0).chromosome) {
                 System.out.println(val);
                 if (val != nbsacsInt) {
-                    chemain = chemain + "S " + val + " I " + counter + "\n";
+                    chemain = chemain + "S " + val + " I " + counter + " \n";
 
                 }
                 counter++;
 
             }
             bestgen.setText(population.solutions.get(0).fitness + "");
-            solgen.setText(chemain);
+            // solgen.setText(chemain);
+            textgen.setText(chemain);
             timegen.setText("Time: " + duration / 1000000 + " ms");
 
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error:zz " + e.getMessage());
         }
 
     }
@@ -527,8 +551,8 @@ public void initialize(URL arg0, ResourceBundle arg1) {
     generations.setText("10");
     mutrate.setText("0.1");
     popsize.setText("50");
-    nbitems.setText("7");
-    nbsacs.setText("7");
+    nbitems.setText("14");
+    nbsacs.setText("20");
 }
 
 
