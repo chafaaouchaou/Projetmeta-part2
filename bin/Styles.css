@@ -1,0 +1,16 @@
+/* .genetictitle{
+    -fx-
+} */
+/* .root {
+    -fx-background-color: #ffffff;
+} */
+
+.labletext{
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+.labletextgen{
+    -fx-font-size: 16px;
+
+}

@@ -3,7 +3,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-
 public class App extends Application  {
    
 
@@ -11,7 +10,7 @@ public class App extends Application  {
         public void start(Stage primaryStage) {
             // Create a button
             // Button button = new Button("Click Me");
-            setUserAgentStylesheet(STYLESHEET_CASPIAN);
+            // setUserAgentStylesheet(STYLESHEET_CASPIAN);
             primaryStage.setTitle("MKP");
             
 
@@ -19,6 +18,10 @@ public class App extends Application  {
         try {
               Parent root = FXMLLoader.load(getClass().getResource("final.fxml"));
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("Styles.css").toExternalForm());
+            // cupertino-dark.css
+            Application.setUserAgentStylesheet("/themes/primer-dark.css");
+
             
             
             

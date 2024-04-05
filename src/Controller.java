@@ -32,11 +32,6 @@ public class Controller implements Initializable {
     @FXML
     private TextField popsize;
 
-    // @FXML
-    // private Label solbso;
-
-    // @FXML
-    // private Label solgen;
 
     @FXML
     private Label timeBSO;
@@ -46,8 +41,18 @@ public class Controller implements Initializable {
 
      @FXML
     private TextArea textgen;
+
      @FXML
     private TextArea textbso;
+
+     @FXML
+    private TextArea lable2t;
+
+     @FXML
+    private TextArea lable21t;
+
+     @FXML
+    private TextArea lable211t;
 
 
 
@@ -79,15 +84,6 @@ public class Controller implements Initializable {
 
     @FXML
     private Label lable111;
-
-    @FXML
-    private Label lable2;
-
-    @FXML
-    private Label lable21;
-
-    @FXML
-    private Label lable211;
 
     @FXML
     private Label labtemp;
@@ -300,12 +296,12 @@ public class Controller implements Initializable {
         // nbitems.clear();
         // nbsacs.clear();
         lable1.setText("");
-        lable2.setText("");
+        lable2t.setText("");
         chemain = "";
         lable11.setText("");
         lable111.setText("");
-        lable21.setText("");
-        lable211.setText("");
+        lable21t.setText("");
+        lable211t.setText("");
         labtemp.setText("");
         labtemp1.setText("");
         labtemp11.setText("");
@@ -315,7 +311,7 @@ public class Controller implements Initializable {
     @FXML
     void startastar(ActionEvent event) {
         lable111.setText("");
-        lable211.setText("");
+        lable211t.setText("");
         chemain = "";
         sacs.clear();
         items.clear();
@@ -372,7 +368,7 @@ public class Controller implements Initializable {
                     chemain = chemain + "S " + obj.sac.nom + " - " + "I " + obj.item.nom + "\n";
                     System.out.println("S " + obj.sac.nom + " - " + "I " + obj.item.nom);
                 }
-                lable211.setText(chemain);
+                lable211t.setText(chemain);
 
             }
             bestresult.path.clear();
@@ -386,7 +382,7 @@ public class Controller implements Initializable {
     @FXML
     void startbfs(ActionEvent event) {
         lable1.setText("");
-        lable2.setText("");
+        lable2t.setText("");
         chemain = "";
         sacs.clear();
         items.clear();
@@ -425,7 +421,7 @@ public class Controller implements Initializable {
                     chemain = chemain + "S " + obj.sac.nom + " - " + "I " + obj.item.nom + "\n";
                     // System.out.println("S " +obj.sac.nom +" - "+"I " +obj.item.nom );
                 }
-                lable2.setText(chemain);
+                lable2t.setText(chemain);
 
             }
             bestresult.path.clear();
@@ -439,7 +435,7 @@ public class Controller implements Initializable {
     @FXML
     void startdfs(ActionEvent event) {
         lable11.setText("");
-        lable21.setText("");
+        lable21t.setText("");
         chemain = "";
         sacs.clear();
         items.clear();
@@ -487,7 +483,7 @@ public class Controller implements Initializable {
                     chemain = chemain + "S " + obj.sac.nom + " - " + "I " + obj.item.nom + "\n";
                     System.out.println("S " + obj.sac.nom + " - " + "I " + obj.item.nom);
                 }
-                lable21.setText(chemain);
+                lable21t.setText(chemain);
 
             }
             bestresult.path.clear();
