@@ -108,7 +108,7 @@
          <children>
             <VBox prefHeight="428.0" prefWidth="297.0">
                <children>
-                  <HBox prefHeight="428.0" prefWidth="289.0">
+                  <HBox prefHeight="245.0" prefWidth="297.0">
                      <children>
                         <VBox prefHeight="188.0" prefWidth="441.0" spacing="10.0">
                            <children>
@@ -157,22 +157,30 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <VBox prefHeight="349.0" prefWidth="297.0">
+                  <HBox prefHeight="209.0" prefWidth="297.0">
                      <children>
-                        <Label text="Solution algorithme genitique" />
-                        <Label fx:id="timegen" text="vide" />
-                        <Label fx:id="bestgen" layoutX="140.0" layoutY="27.0" text="vide" />
-                        <Label fx:id="solgen" layoutX="10.0" layoutY="122.0" text="vide" />
-                        <Label layoutX="72.0" layoutY="10.0" text="Solution algorithme BSO" textAlignment="CENTER">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="timeBSO" layoutX="140.0" layoutY="27.0" text="vide" />
-                        <Label fx:id="bestbso" layoutX="140.0" layoutY="27.0" text="vide" />
-                        <Label fx:id="solbso" layoutX="10.0" layoutY="44.0" text="vide" />
+                        <VBox alignment="TOP_CENTER" prefHeight="87.0" prefWidth="167.0">
+                           <children>
+                              <Label text="algorithme genitique" />
+                              <Label fx:id="timegen" text="vide" />
+                              <Label fx:id="bestgen" text="vide" />
+                              <Label fx:id="solgen" text="vide" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="95.0" prefWidth="178.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="10.0" prefHeight="24.0" prefWidth="130.0" text="algorithme BSO" textAlignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="timeBSO" layoutX="140.0" layoutY="27.0" text="vide" />
+                              <Label fx:id="bestbso" layoutX="140.0" layoutY="27.0" text="vide" />
+                              <Label fx:id="solbso" layoutX="10.0" layoutY="44.0" text="vide" />
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </HBox>
                </children>
             </VBox>
          </children>

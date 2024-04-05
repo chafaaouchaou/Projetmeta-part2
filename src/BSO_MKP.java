@@ -133,8 +133,9 @@ public class BSO_MKP {
                         // System.out.println("Invalid knapsack index" + knapsackIndex);
                         continue;
                     }
-                    knapsackWeights[knapsackIndex] += items.get(i).poids;
-                    knapsackValues[knapsackIndex] += items.get(i).valeur;
+                    knapsackWeights[knapsackIndex] += items.get(ii).poids;
+                    // knapsackValues[knapsackIndex] += 0;
+                    knapsackValues[knapsackIndex] += items.get(ii).valeur;
                 }
             }
         }
