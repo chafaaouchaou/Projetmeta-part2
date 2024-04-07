@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "javafx2_36e0c206"
+        },
+        {
+            "type": "java",
             "name": "BSO_MKP",
             "request": "launch",
             "mainClass": "BSO_MKP",

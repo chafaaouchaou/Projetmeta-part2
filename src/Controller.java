@@ -9,10 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ListView;
-// import STYLESHEET_CASPIAN
-// import java.io.File;
-// import javafx.scene.control.Button;
-// import javafx.scene.layout.VBox;
+
+// import java.io.FileWriter;
+// import java.io.IOException;
+// import java.io.PrintWriter;
+
 import javafx.scene.control.TextArea;
 
 public class Controller implements Initializable {
@@ -31,6 +32,9 @@ public class Controller implements Initializable {
 
     @FXML
     private TextField popsize;
+
+    @FXML
+    private TextField crossoverrate;
 
 
     @FXML
@@ -163,7 +167,7 @@ public class Controller implements Initializable {
 
             System.out.println("Best solution found: " + bestBee.fitness);
             for (Integer val : bestBee.solution) {
-                System.out.println(val);
+                // System.out.println(val);
                 if (val != nbsacsInt) {
                     chemain = chemain + "S " + val + " I " + counter + "\n";
 
@@ -171,7 +175,7 @@ public class Controller implements Initializable {
                 counter++;
 
             }
-            bestbso.setText(bestBee.fitness + "");
+            bestbso.setText((int)bestBee.fitness + "");
             textbso.setText(chemain);
             
             timeBSO.setText("Time: " + duration / 1000000 + " ms");
@@ -187,7 +191,68 @@ public class Controller implements Initializable {
 
 
 
-
+    // @FXML
+    // void startBSO(ActionEvent event) {
+    //     bestbso.setText("");
+    //     textbso.setText("");
+    //     timeBSO.setText("");
+    //     sacs.clear();
+    //     items.clear();
+    //     chemain = "";
+    
+    //     String nbitemss = nbitems.getText();
+    //     String nbsacss = nbsacs.getText();
+    //     String generationss = generations.getText();
+    //     String mutratee = mutrate.getText();
+    //     String popsizee = popsize.getText();
+    //     List<Integer> knapsackCapacity = new ArrayList<>();
+    //     List<Item> itemsmeta = new ArrayList<>();
+    
+    //     try {
+    //         int nbItemsInt = Integer.parseInt(nbitemss);
+    //         int nbsacsInt = Integer.parseInt(nbsacss);
+    //         int startGenerationsInt = Integer.parseInt(generationss);
+    //         double mutrateeInt = Double.parseDouble(mutratee);
+    //         int startPopsizeeInt = Integer.parseInt(popsizee);
+    
+    //         if (selectedSacsFile == null || selectedItemsFile == null) {
+    //             System.out.println("Please select both Sacs and Items files.");
+    //             return;
+    //         }
+    
+    //         // knapsackCapacity = Datameta.getSacs(nbsacsInt, "src\\csv\\" + selectedSacsFile.getName());
+    //         // itemsmeta = Datameta.getItems(nbItemsInt, "src\\csv\\" + selectedItemsFile.getName());
+    
+            
+    //         try (PrintWriter writer = new PrintWriter(new FileWriter("bsoXXXX.csv"))) {
+    //             writer.println("items ; Best Fitness ; Execution Time (ms)");
+                
+    //             for (int items = 10; items <= 200; items +=10) {
+                    
+    //                 knapsackCapacity = Datameta.getSacs(items/4, "src\\csv\\" + selectedSacsFile.getName());
+    //                 itemsmeta = Datameta.getItems(items, "src\\csv\\" + selectedItemsFile.getName());
+                    
+    //                 startTime = System.nanoTime();
+    //                 Bee bestBee = BSO_MKP.bsoalgoexec(items, items/4, startGenerationsInt, startPopsizeeInt, knapsackCapacity, itemsmeta, mutrateeInt);
+    //                 endTime = System.nanoTime();
+    //                 duration = endTime - startTime;
+    
+    //                 System.out.println("Best solution found for population " + items + ": " + bestBee.fitness);
+    
+    //                 writer.println(items + " ; " + (int)bestBee.fitness + " ; " + duration / 1000000);
+    
+    //                 startTime = System.nanoTime(); // Reset the start time for next iteration
+    //             }
+    //         } catch (IOException e) {
+    //             e.printStackTrace();
+    //         }
+    
+    
+    //     } catch (Exception e) {
+    //         System.out.println("Error: " + e.getMessage());
+    //     }
+    // }
+    
 
 
 
@@ -228,6 +293,8 @@ public class Controller implements Initializable {
         String generationss = generations.getText();
         String mutratee = mutrate.getText();
         String popsizee = popsize.getText();
+        String crossoverratee = crossoverrate.getText();
+        
         List<Solution> mergedSolutions = new ArrayList<>();
         List<Integer> knapsackCapacity = new ArrayList<>();
         List<Item> itemsmeta = new ArrayList<>();
@@ -240,6 +307,7 @@ public class Controller implements Initializable {
             int nbsacsInt = Integer.parseInt(nbsacss);
             int generationsInt = Integer.parseInt(generationss);
             double mutrateeInt = Double.parseDouble(mutratee);
+            double crossoverrateInt = Double.parseDouble(crossoverratee);
             int popsizeeInt = Integer.parseInt(popsizee);
 
             if (selectedSacsFile == null || selectedItemsFile == null) {
@@ -249,22 +317,10 @@ public class Controller implements Initializable {
 
             knapsackCapacity = Datameta.getSacs(nbsacsInt, "src\\csv\\" + selectedSacsFile.getName());
             itemsmeta = Datameta.getItems(nbItemsInt, "src\\csv\\" + selectedItemsFile.getName());
-
-
-            // System.out.println(" printing knapsackCapacity");
-            // for (Integer val : knapsackCapacity) {
-            //     System.out.println(val);
-            // }
-            
-            // System.out.println(" printing itemsmeta");
-            // for (Item val : itemsmeta) {
-            //     System.out.println(val.nom + " - " + val.poids + " - " + val.valeur);
-            // }
-
             startTime = System.nanoTime();
 
             Population population = MultipleKnapsackGeneticAlgorithm.geneticalgoexec(mergedSolutions, knapsackCapacity,
-                    itemsmeta, popsizeeInt, mutrateeInt, generationsInt, nbItemsInt, nbsacsInt);
+                    itemsmeta, popsizeeInt, mutrateeInt, generationsInt, nbItemsInt, nbsacsInt,crossoverrateInt);
 
             endTime = System.nanoTime();
 
@@ -290,6 +346,83 @@ public class Controller implements Initializable {
         }
 
     }
+
+
+    // @FXML
+    // void startgenetic(ActionEvent event) {
+    //     bestgen.setText("");
+    //     textgen.setText("");
+    //     timegen.setText("");
+    //     sacs.clear();
+    //     items.clear();
+    //     chemain = "";
+    
+    //     String nbitemss = nbitems.getText();
+    //     String nbsacss = nbsacs.getText();
+    //     String generationss = generations.getText();
+    //     String mutratee = mutrate.getText();
+    //     String popsizee = popsize.getText();
+    //     double crossoverrateInt = 0.6;
+    //     List<Solution> mergedSolutions = new ArrayList<>();
+    //     List<Integer> knapsackCapacity = new ArrayList<>();
+    //     List<Item> itemsmeta = new ArrayList<>();
+    //     System.out.println("nb items : "+nbitemss);
+    //     System.out.println("nb sacs : "+nbsacss);
+    
+    //     try {
+    //         int nbItemsInt = Integer.parseInt(nbitemss);
+    //         int nbsacsInt = Integer.parseInt(nbsacss);
+    //         int generationsInt = Integer.parseInt(generationss);
+    //         double mutrateeInt = Double.parseDouble(mutratee);
+    //         int popsizeeInt = Integer.parseInt(popsizee);
+    
+    //         if (selectedSacsFile == null || selectedItemsFile == null) {
+    //             System.out.println("Please select both Sacs and Items files.");
+    //             return;
+    //         }
+    
+    //         // knapsackCapacity = Datameta.getSacs(nbsacsInt, "src\\csv\\" + selectedSacsFile.getName());
+    //         // itemsmeta = Datameta.getItems(nbItemsInt, "src\\csv\\" + selectedItemsFile.getName());
+            
+    //         try (PrintWriter writer = new PrintWriter(new FileWriter("geneticXXXX.csv"))) {
+    //             // writer.println("Population Size, Mutation Rate, Generations, Best Fitness, Execution Time (ms)");
+    //             writer.println("nombre items ; Best Fitness ; Execution Time (ms)");
+                
+    //             for (int items = 10; items <= 200; items +=10) {
+
+    //                 knapsackCapacity.clear();
+    //                 itemsmeta.clear();
+
+
+    //                 knapsackCapacity = Datameta.getSacs(items/4, "src\\csv\\" + selectedSacsFile.getName());
+    //                 itemsmeta = Datameta.getItems(items, "src\\csv\\" + selectedItemsFile.getName());
+
+
+    //                 startTime = System.nanoTime();
+    //                 Population population = MultipleKnapsackGeneticAlgorithm.geneticalgoexec(mergedSolutions, knapsackCapacity,
+    //                         itemsmeta, popsizeeInt, mutrateeInt, generationsInt, items, items/4,crossoverrateInt);
+    
+    //                 endTime = System.nanoTime();
+    //                 duration = endTime - startTime;
+    
+    //                 System.out.println("Best solution found for population " + items + ": " + population.solutions.get(0).fitness);
+    
+    //                 writer.println(items + " ; " + population.solutions.get(0).fitness + " ; " + duration / 1000000);
+    
+    //                 startTime = System.nanoTime(); // Reset the start time for next iteration
+    //                 mergedSolutions.clear();
+    //             }
+    //         } catch (IOException e) {
+    //             e.printStackTrace();
+    //         }
+    
+    
+    //     } catch (Exception e) {
+    //         System.out.println("Error:zz " + e.getMessage());
+    //     }
+    // }
+    
+
 
     @FXML
     void clearcontent(ActionEvent event) {
@@ -544,10 +677,11 @@ public void initialize(URL arg0, ResourceBundle arg1) {
     });
 
     // Set default values for text fields
-    generations.setText("10");
+    generations.setText("200");
     mutrate.setText("0.1");
-    popsize.setText("50");
-    nbitems.setText("14");
+    crossoverrate.setText("0.6");
+    popsize.setText("200");
+    nbitems.setText("20");
     nbsacs.setText("20");
 }
 

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <top>
       <VBox BorderPane.alignment="CENTER" />
    </top>
@@ -57,6 +57,8 @@
             <TextField fx:id="popsize" layoutX="15.0" layoutY="119.0" />
             <Label layoutX="53.0" layoutY="258.0" text="mutationRate/RHO" />
             <TextField fx:id="mutrate" layoutX="15.0" layoutY="275.0" />
+            <Label layoutX="53.0" layoutY="410.0" text="crossover rate" />
+            <TextField fx:id="crossoverrate" layoutX="15.0" layoutY="430.0" />
             <Label layoutX="53.0" layoutY="300.0" text="generations" />
             <TextField fx:id="generations" layoutX="15.0" layoutY="317.0" />
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="14.0">

@@ -1,0 +1,50 @@
+Algorithme: Bee_Swarm_Optimization
+
+Entrées:
+    - Nombre_sites_source: nombre de sites pour la récolte de nourriture
+    - Nombre_iterations: nombre maximum d'itérations à exécuter
+    - RHO: probabilité de devenir une abeille éclaireuse
+    - Fonction_Fitness: fonction qui évalue la qualité de chaque solution
+    - Autres paramètres spécifiques au problème
+
+Sortie:
+    - Meilleure_solution_trouvée
+
+1. Initialiser une population initiale de sites source générés aléatoirement
+2. Pour chaque sites, évaluer sa qualité en utilisant la fonction fitness
+3. Répéter pour un nombre donné d'itérations:
+    a. les abeilles explorent les sites voisins et évalue leur qualité
+    b. Les abeilles partagent les informations sur les sites voisins
+    c. Pour chaque abeille:
+        - Avec une probabilité RHO, l'abeille devient une abeille éclaireuse selon des condition d'inactivité et explore un nouveau site aléatoire
+        - Sinon, l'abeille continue à butiner les sites existants et à les améliorer
+    d. Mettre à jour les positions des abeilles en fonction des informations partagées
+4. Retourner la meilleure solution trouvée
+
+Fin de l'algorithme
+/////////////////////////////////////////////////////////////
+
+
+
+Algorithme: Algorithme_Génétique
+
+Entrées:
+    - Taille_population: nombre de solutions dans chaque génération
+    - Taux_mutation: probabilité de mutation pour chaque gène
+    - Nombre_générations: nombre maximum de générations à exécuter
+    - Fonction_Fitness: fonction qui évalue la qualité de chaque solution
+    - Autres paramètres spécifiques au problème
+
+Sortie:
+    - Meilleure_solution_trouvée
+
+1. Initialiser une population aléatoire de solutions (population initiale)
+2. Pour chaque solution dans la population initiale, calculer sa valeur de fitness en utilisant la fonction fitness
+3. Répéter jusqu'à ce que le nombre maximum de générations soit atteint:
+    a. Sélectionner des solutions parentales pour la reproduction basée sur leur fitness
+    b. Créer de nouvelles solutions en combinant les solutions parentales par crossover et en appliquant des mutations
+    c. Calculer la valeur de fitness pour chaque nouvelle solution
+    d. Sélectionner les meilleures solutions pour former la prochaine génération
+4. Retourner la meilleure solution trouvée dans la population finale
+
+Fin de l'algorithme

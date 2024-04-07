@@ -220,29 +220,6 @@ public class BSO_MKP {
         }
         return bestBee;
     }
-    // static void initializeItems(List<Integer> knapsackCapacityList,List<Item> items) {
-    // items.add(new Item(10, 20));
-    // items.add(new Item(11, 21));
-    // items.add(new Item(13, 24));
-    // items.add(new Item(12, 23));
-    // items.add(new Item(14, 26));
-    // items.add(new Item(15, 28));
-    // items.add(new Item(16, 30));
-    // items.add(new Item(17, 32));
-    // items.add(new Item(19, 36));
-    // items.add(new Item(18, 34));
-    // knapsackCapacityList.add(21);
-    // knapsackCapacityList.add(16);
-    // knapsackCapacityList.add(11);
-    // knapsackCapacityList.add(14);
-    // knapsackCapacityList.add(19);
-    // knapsackCapacityList.add(23);
-    // knapsackCapacityList.add(27);
-    // knapsackCapacityList.add(29);
-    // knapsackCapacityList.add(13);
-
-
-    // }
     static void mutatealter(Bee bee,int index,int numKnapsacks,int numItems) {
         int patata = random.nextInt(numItems);
 

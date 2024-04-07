@@ -44,8 +44,9 @@ public class MultipleKnapsackGeneticAlgorithm {
         int generations = 30;
         int numberOfItems = items.size();
         int numberOfKnapsacks = knapsackCapacity.size();
+        double crosproba = 0.5;
 
-        Population population = geneticalgoexec(mergedSolutions,knapsackCapacity,items,populationSize,mutationRate,generations,numberOfItems,numberOfKnapsacks);
+        Population population = geneticalgoexec(mergedSolutions,knapsackCapacity,items,populationSize,mutationRate,generations,numberOfItems,numberOfKnapsacks,crosproba);
         
         System.out.println("Best solution found: " + population.solutions.get(0).fitness);
         for ( Integer val: population.solutions.get(0).chromosome) {
@@ -55,12 +56,12 @@ public class MultipleKnapsackGeneticAlgorithm {
     }
 
 
-    static Population geneticalgoexec( List<Solution> mergedSolutions,List<Integer> knapsackCapacity,List<Item> items,  int populationSize, double mutationRate, int generations,int numberOfItems, int numberOfKnapsacks)
+    static Population geneticalgoexec( List<Solution> mergedSolutions,List<Integer> knapsackCapacity,List<Item> items,  int populationSize, double mutationRate, int generations,int numberOfItems, int numberOfKnapsacks,double crosproba)
     {
         Population population = initializePopulation(items,populationSize,numberOfItems,numberOfKnapsacks,knapsackCapacity);
         mergedSolutions.addAll(population.solutions);
         for (int i = 0; i < generations; i++) {
-            population = evolvePopulation(population,items,populationSize, numberOfItems,numberOfKnapsacks,mutationRate,knapsackCapacity);
+            population = evolvePopulation(population,items,populationSize, numberOfItems,numberOfKnapsacks,mutationRate,knapsackCapacity,crosproba);
             mergedSolutions.addAll(population.solutions);
             Collections.sort(mergedSolutions, (s1, s2) -> Integer.compare(s2.fitness, s1.fitness));
             population.solutions.clear();
@@ -155,10 +156,10 @@ public class MultipleKnapsackGeneticAlgorithm {
 
     }
 
-    static Population evolvePopulation(Population population,List<Item> items,int populationSize,int numberOfItems,int numberOfKnapsacks, double mutationRate,List<Integer> knapsackCapacity ) {
+    static Population evolvePopulation(Population population,List<Item> items,int populationSize,int numberOfItems,int numberOfKnapsacks, double mutationRate,List<Integer> knapsackCapacity ,double crosproba ) {
         Population newPopulation = new Population();
-
-        for (int i = 0; i < populationSize; i++) {
+        int s = (int)((double)populationSize*crosproba);
+        for (int i = 0; i < s; i++) {
             Solution parent1 = selectParent(population,populationSize);
             Solution parent2 = selectParent(population,populationSize);
             Solution child = crossover(parent1, parent2,numberOfItems);

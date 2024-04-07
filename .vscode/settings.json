@@ -11,5 +11,6 @@
         "c:\\javafx\\javafx-sdk-22\\lib\\javafx.swing.jar",
         "c:\\javafx\\javafx-sdk-22\\lib\\javafx.web.jar",
         "c:\\javafx\\javafx-sdk-22\\lib\\javafx-swt.jar"
-    ]
+    ],
+    "cSpell.language": "en,fr"
 }

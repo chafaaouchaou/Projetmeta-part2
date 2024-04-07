@@ -18,7 +18,7 @@ public class App extends Application  {
         try {
               Parent root = FXMLLoader.load(getClass().getResource("final.fxml"));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("Styles.css").toExternalForm());
+            // scene.getStylesheets().add(getClass().getResource("Styles.css").toExternalForm());
             // cupertino-dark.css
             Application.setUserAgentStylesheet("/themes/primer-dark.css");
 
